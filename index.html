@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XKCD / IT-Stödperson style</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/fetchTasklist.js"></script>
+</head>
+<body>
+    <header><h1>XKCD / IT-stödpersonstyle</h1></header>
+    <main>
+        <div id="mainComic"></div>
+        
+    </main>
+
+</body>
+</html>
+
+<body>
+
+    <div id="container">
+  
+      <nav>
+        <ul>
+          <li><a href="#">Compilation</a></li>
+          <li><a href="pages/task.html">Tasks</a></li>
+          <li><a href="pages/activity.html">Activities</a></li>
+        </ul>
+      </nav>
+  
+      <main>
+  
+        <section id="compilation">
+            <h2>Sammanställning</h2>
+            <table>
+                <tr><th>Kategori</th><th>Tid</th></tr>
+              <tbody id='sammanstallning'></tbody>
+            </table>
+        </section>
+
+        <div id="timespannav">
+            <ul>
+                <li id="forsta">&lt;&lt;</li>
+                <li id="forra">&lt;</li>
+                <li id="nasta">&gt;</li>
+                <li id="sista">&gt;&gt;</li>
+            </ul>
+        </div>
+
+        <section id="timespan">
+  
+            <input type="date" id="startdatum">
+            <input type="date" id="slutdatum">
+            <button onclick="UppdateraSammanstallning()">Hämta</button><br><br>  
+        </section>
+  
+      </main>
+  
+      <footer>
+        <p>time by Leif</p>
+    </footer>
+  
+    </div><!-- end of container -->
+  
+  </body>

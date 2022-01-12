@@ -1,0 +1,107 @@
+* {
+    box-sizing: inherit;
+    padding: 0;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #a4d4ff;
+}
+
+#container {
+    max-width: 1400px;
+    margin: 0em auto;
+  }
+
+header {
+    background-color: AliceBlue;
+    margin: 10px auto;
+    width: 80%;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: AliceBlue;
+    margin: 10px auto;
+    width: 80%;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+footer {
+    background-color: AliceBlue;
+    margin: 10px auto;
+    width: 80%;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+li {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 5px;
+    border: 5px solid black;
+    border-radius: 5px;
+    background-color: AliceBlue;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+p {
+    text-align: center;
+    margin-top: 5px;
+}
+
+
+figure {
+    width: 80%;
+    display: block;
+    margin: auto;
+}
+
+figcaption, img {
+    width: 100%;
+    display: block;
+    margin: auto;
+}
+
+ul {
+    padding-left: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+@media screen and (min-width: 700px) {
+    
+    main {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+    }
+    
+    #tasklist {
+      grid-column:1;
+    }
+
+    #timespannav {
+      grid-column:1;
+    }
+
+    #timespan {
+      grid-column:2;
+    }
+
+    #taskchange {
+      grid-column:2;
+    }
+  
+  }

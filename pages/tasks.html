@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uppgifter</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="../js/fetchTasks.js"></script>
+</head>
+
+<body>
+
+    <div id="container">
+
+        <nav>
+            <ul>
+                <li><a href="#">Sammanställning</a></li>
+                <li><a href="pages/task.html">Uppgifter</a></li>
+                <li><a href="pages/activity.html">Kategorier</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section id="tasklist">
+                <h2>Uppgifter</h2>
+                <table>
+                    <thead>
+                          <tr>
+                        <th>Datum</th>
+                        <th>Kategori</th>
+                        <th>Tid</th>
+                        <th>Radera</th>
+                    </tr>                  
+                    </thead>
+
+                    <tbody id='tasktablebody'></tbody>
+                </table>            
+                
+                <div id="timespannav">
+                <ul>
+                    <li id="forsta">&lt;&lt;</li>
+                    <li id="forra">&lt;</li>
+                    <li id="nasta">&gt;</li>
+                    <li id="sista">&gt;&gt;</li>
+                </ul>
+            </div>
+            </section>
+
+            <section id="timespan">
+
+                <input type="date" id="startdatum">
+                <input type="date" id="slutdatum">
+                <button>Hämta</button><br><br>
+            </section>
+
+            <section id="taskchange">
+
+                <h2>Ny Uppgift</h2>
+
+                <form id="nyuppgiftform">
+                    <label for="kategorier">Kategori:</label>
+                    <select name="kategorier" id="kategorier">
+                    </select><br><br>
+
+                    <label for="datum">Datum:</label>
+                    <input type="date" id="datum" name="date"><br><br>
+
+                    <label for="tid">Tid:</label>
+                    <input type="time" id="tid" name="time"><br><br>
+                </form>
+
+                <button>Spara Uppgift</button>
+            </section>
+
+        </main>
+
+        <footer>
+            <p>time by Leif</p>
+        </footer>
+
+    </div><!-- end of container -->
+
+</body>
