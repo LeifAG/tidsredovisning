@@ -1,4 +1,4 @@
-function getTasklistPage(page) {
+function getTasklistPages(page) {
     fetch('https://www.datanom.ax/~kjell/Tidsredovisning/getTasklist.php?page=' + page)
         .then(function (response) {
             if (response.status == 200) {
@@ -6,16 +6,21 @@ function getTasklistPage(page) {
             }
         })
         .then(function (data) {
-            appendRowsPage(data, page);
+            appendRows(data, page);
         })
 }
 
-function appendRowsPage(data, page) {
-    let tr, td_task, td_datum, td_tid, td_radera, td_desc;
-    let tasks = data.tasks;
+function appendRows(data, page = 0) {
+    let tablebody, pagenav, tr, td_task, td_datum, td_tid, td_radera, td_desc, pages, tasks;
+    
+    tasks = data.tasks;
+    if (page != 0) { pages = data.pages; }
+
+    pagenav = document.getElementById("pagenav");
+    pagenav.innerHTML = "";
 
     //hämtar tabellkroppen och tömmer den
-    let tablebody = document.getElementById("tasktablebody")
+    tablebody = document.getElementById("tasktablebody")
     tablebody.innerHTML = "";
 
     for (let i = 0; i < tasks.length; i++) {
@@ -39,7 +44,7 @@ function appendRowsPage(data, page) {
         //skapar tid cell i raden
         td_desc = document.createElement('td');
         td_desc.innerHTML = tasks[i].description;
-        
+
         //skapar radera cell i raden
         td_radera = document.createElement('td');
         td_radera.innerHTML = "X";
@@ -53,58 +58,74 @@ function appendRowsPage(data, page) {
         tablebody.appendChild(tr);
     }
 
-    let ul, li_ff, li_f, li_n, li_nn;
-    let pages = data.pages;
-    console.log("page="+page+" and pages="+pages);
+    if (page != 0) { appendPageNav(pagenav, page, pages); }
 
-    let pagenav = document.getElementById("pagenav")
-    pagenav.innerHTML="";
+}
+
+function appendPageNav(pagenav, page, pages) {
+    let ul, li_ff, li_f, li_n, li_nn;
+    console.log("page=" + page + " and pages=" + pages);
+
     ul = document.createElement('ul');
 
-    if(page!=1&&page!=2){
+    if (page != 1 && page != 2) {
         li_ff = document.createElement('li');
-        li_ff.innerHTML="&lt;&lt;";
-        li_ff.onclick=function(){getTasklistPage(1)};
+        li_ff.innerHTML = "&lt;&lt;";
+        li_ff.onclick = function () { getTasklistPages(1) };
         ul.appendChild(li_ff);
     }
-    if(page!=1){
+    if (page != 1) {
         li_f = document.createElement('li');
-        li_f.innerHTML="&lt";
-        li_f.onclick=function(){getTasklistPage(page-1)};
+        li_f.innerHTML = "&lt";
+        li_f.onclick = function () { getTasklistPages(page - 1) };
         ul.appendChild(li_f);
     }
-    if(page!=pages){
+    if (page != pages) {
         li_n = document.createElement('li');
-        li_n.innerHTML="&gt;";
-        li_n.onclick=function(){getTasklistPage(page+1)};
+        li_n.innerHTML = "&gt;";
+        li_n.onclick = function () { getTasklistPages(page + 1) };
         ul.appendChild(li_n);
     }
-    if(page!=pages&&page!=(pages-1)){
+    if (page != pages && page != (pages - 1)) {
         li_nn = document.createElement('li');
-        li_nn.innerHTML="&gt;&gt;";
-        li_nn.onclick=function(){getTasklistPage(pages)};
+        li_nn.innerHTML = "&gt;&gt;";
+        li_nn.onclick = function () { getTasklistPages(pages) };
         ul.appendChild(li_nn);
     }
 
     pagenav.appendChild(ul);
-
 }
 
 window.onload = function () {
-    getTasklistPage(1);
+    setDates();
+    getTasklistPages(1);
+    document.getElementById("dateGet").addEventListener("click",function(){getTasklistDates()});
+    document.getElementById("pageGet").addEventListener("click",function(){getTasklistPages(1)});
 }
 
-/*
-function loadDates() {
+function setDates() {
     let date = new Date();
-    document.getElementById("stopdate").value = date.toISOString().split('T')[0];
-    date.setDate(date.getDate() - 30)
-    document.getElementById("startdate").value = date.toISOString().split('T')[0];
-
-    updateTasklist();
+    document.getElementById("stopDate").value = date.toISOString().split('T')[0];
+    date.setDate(date.getDate() - 400)
+    document.getElementById("startDate").value = date.toISOString().split('T')[0];
 }
 
-function updateTasklist() {
+function getTasklistDates() {
+    let startDate = document.getElementById("startDate").value;
+    let stopDate = document.getElementById("stopDate").value;
+    
+    fetch('https://www.datanom.ax/~kjell/Tidsredovisning/getTasklist.php?from=' + startDate+"&to="+stopDate)
+    .then(function (response) {
+        if (response.status == 200) {
+            return response.json();
+        }
+    })
+    .then(function (data) {
+        appendRows(data);
+    })
+}
+
+    /*
     let startDate = document.getElementById("startdate").value;
     let stopDate = document.getElementById("stopdate").value;
 

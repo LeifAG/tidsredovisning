@@ -27,26 +27,26 @@
                 <h2>Uppgifter</h2>
                 <table>
                     <thead>
-                          <tr>
-                        <th>Datum</th>
-                        <th>Tid</th>
-                        <th>Kategori</th>
-                        <th>Anteckningar</th>
-                        <th>Radera</th>
-                    </tr>                  
+                        <tr>
+                            <th>Datum</th>
+                            <th>Tid</th>
+                            <th>Kategori</th>
+                            <th>Anteckningar</th>
+                            <th>Radera</th>
+                        </tr>
                     </thead>
 
                     <tbody id='tasktablebody'></tbody>
-                </table>            
-                
+                </table>
+
                 <div id="pagenav"></div>
             </section>
 
             <section id="timespan">
-
-                <input type="date" id="startdatum">
-                <input type="date" id="slutdatum">
-                <button>Hämta</button><br><br>
+                    <input type="date" id="startDate" required>
+                    <input type="date" id="stopDate" required><br>
+                    <button id="dateGet">Datum</button>
+                    <button id="pageGet">Sidor</button>
             </section>
 
             <section id="taskchange">
