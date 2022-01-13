@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uppgifter</title>
     <link rel="stylesheet" href="../css/main.css">
-    <script src="../js/fetchTasks.js"></script>
+    <script src="../js/fetchTask.js"></script>
 </head>
 
 <body>
@@ -16,9 +16,9 @@
 
         <nav>
             <ul>
-                <li><a href="#">Sammanställning</a></li>
-                <li><a href="pages/task.html">Uppgifter</a></li>
-                <li><a href="pages/activity.html">Kategorier</a></li>
+                <li><a href="../index.html">Sammanställning</a></li>
+                <li><a href="#">Uppgifter</a></li>
+                <li><a href="activity.html">Kategorier</a></li>
             </ul>
         </nav>
 
@@ -29,8 +29,9 @@
                     <thead>
                           <tr>
                         <th>Datum</th>
-                        <th>Kategori</th>
                         <th>Tid</th>
+                        <th>Kategori</th>
+                        <th>Anteckningar</th>
                         <th>Radera</th>
                     </tr>                  
                     </thead>
@@ -38,14 +39,7 @@
                     <tbody id='tasktablebody'></tbody>
                 </table>            
                 
-                <div id="timespannav">
-                <ul>
-                    <li id="forsta">&lt;&lt;</li>
-                    <li id="forra">&lt;</li>
-                    <li id="nasta">&gt;</li>
-                    <li id="sista">&gt;&gt;</li>
-                </ul>
-            </div>
+                <div id="pagenav"></div>
             </section>
 
             <section id="timespan">

@@ -1,4 +1,4 @@
-function getTasklist(page) {
+function getTasklistPage(page) {
     fetch('https://www.datanom.ax/~kjell/Tidsredovisning/getTasklist.php?page=' + page)
         .then(function (response) {
             if (response.status == 200) {
@@ -6,12 +6,12 @@ function getTasklist(page) {
             }
         })
         .then(function (data) {
-            appendRows(data);
+            appendRowsPage(data, page);
         })
 }
 
-function appendRows(data) {
-    let tr, td_task, td_datum, td_tid, td_radera;
+function appendRowsPage(data, page) {
+    let tr, td_task, td_datum, td_tid, td_radera, td_desc;
     let tasks = data.tasks;
 
     //hämtar tabellkroppen och tömmer den
@@ -35,22 +35,63 @@ function appendRows(data) {
         //skapar tid cell i raden
         td_tid = document.createElement('td');
         td_tid.innerHTML = tasks[i].time;
+
+        //skapar tid cell i raden
+        td_desc = document.createElement('td');
+        td_desc.innerHTML = tasks[i].description;
         
         //skapar radera cell i raden
         td_radera = document.createElement('td');
-        td_radera.innerHTML = "Radera";
+        td_radera.innerHTML = "X";
 
         //lägger till celler i raden och sen i tabellkroppen
         tr.appendChild(td_datum);
-        tr.appendChild(td_task);
         tr.appendChild(td_tid);
+        tr.appendChild(td_task);
+        tr.appendChild(td_desc);
         tr.appendChild(td_radera);
         tablebody.appendChild(tr);
     }
+
+    let ul, li_ff, li_f, li_n, li_nn;
+    let pages = data.pages;
+    console.log("page="+page+" and pages="+pages);
+
+    let pagenav = document.getElementById("pagenav")
+    pagenav.innerHTML="";
+    ul = document.createElement('ul');
+
+    if(page!=1&&page!=2){
+        li_ff = document.createElement('li');
+        li_ff.innerHTML="&lt;&lt;";
+        li_ff.onclick=function(){getTasklistPage(1)};
+        ul.appendChild(li_ff);
+    }
+    if(page!=1){
+        li_f = document.createElement('li');
+        li_f.innerHTML="&lt";
+        li_f.onclick=function(){getTasklistPage(page-1)};
+        ul.appendChild(li_f);
+    }
+    if(page!=pages){
+        li_n = document.createElement('li');
+        li_n.innerHTML="&gt;";
+        li_n.onclick=function(){getTasklistPage(page+1)};
+        ul.appendChild(li_n);
+    }
+    if(page!=pages&&page!=(pages-1)){
+        li_nn = document.createElement('li');
+        li_nn.innerHTML="&gt;&gt;";
+        li_nn.onclick=function(){getTasklistPage(pages)};
+        ul.appendChild(li_nn);
+    }
+
+    pagenav.appendChild(ul);
+
 }
 
 window.onload = function () {
-    getTasklist(1);
+    getTasklistPage(1);
 }
 
 /*
