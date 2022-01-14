@@ -92,15 +92,7 @@ ul {
       grid-column:1;
     }
 
-    #timespannav {
-      grid-column:1;
-    }
-
-    #timespan {
-      grid-column:2;
-    }
-
-    #taskchange {
+    aside {
       grid-column:2;
     }
   
