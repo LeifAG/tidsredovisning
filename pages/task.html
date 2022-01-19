@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uppgifter</title>
     <link rel="stylesheet" href="../css/main.css">
+    <script src="../js/editTask.js"></script>
     <script src="../js/fetchTask.js"></script>
+    <script src="../js/loadJS.js"></script>
 </head>
 
 <body>
@@ -43,32 +45,30 @@
             </section>
 
             <aside>
-            <section id="datenav">
+                <section id="datenav">
                     <input type="date" id="startDate" required>
                     <input type="date" id="stopDate" required><br>
                     <button id="dateGet">Datum</button>
                     <button id="pageGet">Sidor</button>
-            </section>
+                </section>
 
-            <section id="taskchange">
-
-                <h2>Ny Uppgift</h2>
-
-                <form id="nyuppgiftform">
-                    <label for="kategorier">Kategori:</label>
-                    <select name="kategorier" id="kategorier">
-                    </select><br><br>
-
-                    <label for="datum">Datum:</label>
-                    <input type="date" id="datum" name="date"><br><br>
-
-                    <label for="tid">Tid:</label>
-                    <input type="time" id="tid" name="time"><br><br>
-                </form>
-
-                <button>Spara Uppgift</button>
-            </section>
-</aside>
+                <section id="edittask">
+                    <form>
+                        <fieldset>
+                            <legend id="taskformlegend">Ny Uppgift</legend>
+                            <label for="activityinput">Kategori:</label>
+                            <select name="activityinput" id="activityinput"></select><br>
+                            <label for="dateinput">Datum:</label>
+                            <input type="date" name="dateinput" id="dateinput"><br>
+                            <label for="timeinput">Tid:</label>
+                            <input type="time" name="timeinput" id="timeinput"><br>
+                            <label for="commentinput">Anteckning:</label>
+                            <input name="commentinput" id="commentinput"><br>
+                            <button type="button" onclick="saveTask()">Spara</button>
+                        </fieldset>
+                    </form>
+                </section>
+            </aside>
         </main>
 
         <footer>

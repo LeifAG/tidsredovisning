@@ -15,22 +15,22 @@ function getTasklistPages(page) {
 function getTasklistDates() {
     let startDate = document.getElementById("startDate").value;
     let stopDate = document.getElementById("stopDate").value;
-    
-    fetch('https://www.datanom.ax/~kjell/Tidsredovisning/getTasklist.php?from=' + startDate+"&to="+stopDate)
-    .then(function (response) {
-        if (response.status == 200) {
-            return response.json();
-        }
-    })
-    .then(function (data) {
-        appendRows(data);
-    })
+
+    fetch('https://www.datanom.ax/~kjell/Tidsredovisning/getTasklist.php?from=' + startDate + "&to=" + stopDate)
+        .then(function (response) {
+            if (response.status == 200) {
+                return response.json();
+            }
+        })
+        .then(function (data) {
+            appendRows(data);
+        })
 }
 
 //lägger till rader av tasks till tabell på sidan
 function appendRows(data, page = 0) {
     let tablebody, pagenav, tr, td_task, td_datum, td_tid, td_radera, td_desc, pages, tasks;
-    
+
     //skapar tasks array från hämtningen data
     tasks = data.tasks;
 
@@ -89,7 +89,6 @@ function appendRows(data, page = 0) {
 //skapar sidnavigering bland tasks
 function appendPageNav(pagenav, page, pages) {
     let ul, li_ff, li_f, li_n, li_nn;
-    console.log("page=" + page + " and pages=" + pages);
 
     ul = document.createElement('ul');
 
@@ -128,12 +127,4 @@ function setDates() {
     document.getElementById("stopDate").value = date.toISOString().split('T')[0];
     date.setDate(date.getDate() - 400)
     document.getElementById("startDate").value = date.toISOString().split('T')[0];
-}
-
-//när sidan laddats startas js funtioner
-window.onload = function () {
-    setDates();
-    getTasklistPages(1);
-    document.getElementById("dateGet").addEventListener("click",function(){getTasklistDates()});
-    document.getElementById("pageGet").addEventListener("click",function(){getTasklistPages(1)});
 }
