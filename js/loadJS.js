@@ -1,6 +1,5 @@
 //när sidan laddats startas js funtioner
 window.onload = function () {
-    console.log("loaded");
     setDates();
     fillDropdown();
     getTasklistPages(1);

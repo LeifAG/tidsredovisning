@@ -55,6 +55,7 @@ function appendRows(data, page = 0) {
         //skapar uppgift cell i raden
         td_task = document.createElement('td');
         td_task.innerHTML = tasks[i].activity;
+        td_task.onclick=function(){editTask(tasks[i].id)}
 
         //skapar datum cell i raden
         td_datum = document.createElement('td');
