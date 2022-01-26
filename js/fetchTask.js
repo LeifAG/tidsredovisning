@@ -72,6 +72,9 @@ function appendRows(data, page = 0) {
         //skapar radera cell i raden
         td_radera = document.createElement('td');
         td_radera.innerHTML = "X";
+        td_radera.onclick=function(){
+            if(confirm("Vill du radera detta kategori?")){
+                deleteTask(tasks[i].id)}}
 
         //lägger till celler i raden och sen i tabellkroppen
         tr.appendChild(td_datum);
@@ -128,4 +131,13 @@ function setDates() {
     document.getElementById("stopDate").value = date.toISOString().split('T')[0];
     date.setDate(date.getDate() - 400)
     document.getElementById("startDate").value = date.toISOString().split('T')[0];
+}
+
+//när sidan laddats startas js funtioner
+window.onload = function () {
+    setDates();
+    fillDropdown();
+    getTasklistPages(1);
+    document.getElementById("dateGet").addEventListener("click",function(){getTasklistDates()});
+    document.getElementById("pageGet").addEventListener("click",function(){getTasklistPages(1)});
 }

@@ -93,6 +93,26 @@ function editTask(id) {
         })
 }
 
-function deleteTask() {
+function deleteTask(id) {
+    //skapa ett formdata objekt
+    let FD = new FormData();
+    FD.append("id", id);
 
+    //Sparar via fetch med post data
+    fetch('https://www.datanom.ax/~kjell/Tidsredovisning/deleteTask.php',
+        {
+            method: 'post',
+            body: FD
+        })
+        .then(function (response) {
+            if (response.status == 200) {
+                return response.json();
+            }
+            else {
+                throw (error);
+            }
+        })
+        .then(function (data) {
+            document.getElementById("row"+id).remove();
+        })
 }

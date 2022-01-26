@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kategorier</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="../js/editActivity.js"></script>
+    <script src="../js/fetchActivity.js"></script>
+</head>
+
+<body>
+
+    <div id="container">
+
+        <nav>
+            <ul>
+                <li><a href="../index.html">Sammanställning</a></li>
+                <li><a href="task.html">Uppgifter</a></li>
+                <li><a href="#">Kategorier</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section id="activitylist">
+                <h2>Kategorier</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Kategori</th>
+                            <th>Radera</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id='activitytablebody'></tbody>
+                </table>
+            </section>
+
+            <aside>
+
+                <section id="editactivity">
+                    <form>
+                        <fieldset>
+                            <legend id="activityformlegend">Ny Kategori</legend>
+                            <label for="activityinput">Kategori:</label>
+                            <input type="text" name="activityinput" id="activityinput"><br>
+                            <button id="sendActivity" type="button" onclick="saveActivity()">Spara</button>
+                        </fieldset>
+                    </form>
+                </section>
+            </aside>
+        </main>
+
+        <footer>
+            <p>time by Leif</p>
+        </footer>
+
+    </div><!-- end of container -->
+
+</body>

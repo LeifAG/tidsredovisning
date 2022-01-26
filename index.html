@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,48 +13,45 @@
 <body>
 
     <div id="container">
-  
-      <nav>
-        <ul>
-          <li><a href="#">Compilation</a></li>
-          <li><a href="pages/task.html">Tasks</a></li>
-          <li><a href="pages/activity.html">Activities</a></li>
-        </ul>
-      </nav>
-  
-      <main>
-  
-        <section id="compilation">
-            <h2>Sammanställning</h2>
-            <table>
-                <tr><th>Kategori</th><th>Tid</th></tr>
-              <tbody id='sammanstallning'></tbody>
-            </table>
-        </section>
 
-        <div id="timespannav">
+        <nav>
             <ul>
-                <li id="forsta">&lt;&lt;</li>
-                <li id="forra">&lt;</li>
-                <li id="nasta">&gt;</li>
-                <li id="sista">&gt;&gt;</li>
+                <li><a href="#">Sammanställning</a></li>
+                <li><a href="pages/task.html">Uppgifter</a></li>
+                <li><a href="pages/activity.html">Kategorier</a></li>
             </ul>
-        </div>
+        </nav>
 
-        <section id="timespan">
-            <input type="date" id="startdatum">
-            <input type="date" id="slutdatum">
-            <button onclick="UppdateraSammanstallning()">Hämta</button><br><br>  
-        </section>
-  
-      </main>
-  
-      <footer>
-        <p>time by Leif</p>
-    </footer>
-  
+        <main>
+            <section id="compilation">
+                <h2>Sammanställning</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Kategori</th>
+                            <th>Tid</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id='compilationtablebody'></tbody>
+                </table>
+
+            </section>
+
+            <aside>
+                <section id="datenav">
+                    <input type="date" id="startDate" required>
+                    <input type="date" id="stopDate" required><br>
+                    <button id="dateGet">Datum</button>
+                </section>
+
+            </aside>
+        </main>
+
+        <footer>
+            <p>time by Leif</p>
+        </footer>
+
     </div><!-- end of container -->
-  
-  </body>
 
-  </html>
+</body>
