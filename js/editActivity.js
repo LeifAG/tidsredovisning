@@ -37,6 +37,7 @@ function saveActivity(id = -1) {
         })
         .then(function (data) {
             resetActivityForm();
+            getActivitylist()
         })
 }
 
@@ -76,6 +77,6 @@ function deleteActivity(id) {
             }
         })
         .then(function (data) {
-            document.getElementById("row"+id).remove();
+            getActivitylist()
         })
 }
